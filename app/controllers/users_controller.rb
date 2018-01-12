@@ -17,7 +17,12 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find(params[:user][:id])
+    if (@user = User.find(params[:user][:id]))
+      session[:user_id] = @user.id
+      redirect_to root_url
+    else
+      render :login
+    end
   end
 
   private
