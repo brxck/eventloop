@@ -1,5 +1,8 @@
 <% @events.each do |event| %>
   <%= content_tag :div, event.name %>
   <%= content_tag :div, "#{event.datetime} at #{event.location}" %>
+  <% if !current_page?(controller: 'users') %>
+    <%= content_tag :div, User.find(event.creator_id).name %>
+  <% end %>
   <br>
 <% end %>

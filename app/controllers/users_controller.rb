@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -19,11 +18,13 @@ class UsersController < ApplicationController
   end
 
   def login
-    if (@user = User.find(params[:user][:id]))
+    if (@user = User.find_by(email: params[:user][:email]))
       session[:user_id] = @user.id
-      redirect_to root_url
+      flash[:sucess] = "You are now logged in as #{current_user.name}."
+      redirect_to @user
     else
-      render :login
+      flash.now[:danger] = 'Login unsuccessful.'
+      redirect_to root_url
     end
   end
 
