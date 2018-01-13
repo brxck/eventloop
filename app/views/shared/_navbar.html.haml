@@ -1,0 +1,8 @@
+%ul
+  %li= link_to 'Home', root_url
+  %li= link_to 'Browse', events_path
+  - if logged_in?
+    %li= link_to 'Your Events', current_user
+    %li= link_to 'Log out', '#'
+  - else
+    %li= link_to 'Login', login_path 
