@@ -1,0 +1,7 @@
+= content_tag :h1, @event.name
+= content_tag :div, format_date(@event.datetime)
+= content_tag :div, @event.location
+= content_tag :div, @event.description
+= content_tag :div, "People going:"
+- @event.attendees.each do |attendee|
+  = content_tag :div, link_to(attendee.name, attendee)
