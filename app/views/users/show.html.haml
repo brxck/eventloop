@@ -1,4 +1,4 @@
-= content_tag :h1, @user.name
+%h1= @user.name
 = render partial: 'shared/events_feed', locals: {events: @hosted, name: 'hosted'}
 = render partial: 'shared/events_feed', locals: {events: @upcoming, name: 'upcoming'}
 = render partial: 'shared/events_feed', locals: {events: @past, name: 'past'}

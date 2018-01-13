@@ -1,14 +1,14 @@
-= content_tag :div, "#{name.capitalize} Events:"
+.events= "#{name.capitalize} Events:"
 - if events.any?
   - events.each do |event|
-    = content_tag :div, link_to(event.name, event)
-    = content_tag :div, format_date(event.datetime)
-    = content_tag :div, event.location
-    = content_tag :div, event.description.truncate(32).gsub(/\n/, " ")
+    .name= link_to(event.name, event)
+    .date= format_date(event.datetime)
+    .location= event.location
+    .description= event.description.truncate(32).gsub(/\n/, " ")
     - if !current_page?(controller: 'users')
       %div
         Hosted by #{link_to("#{event.creator.name}", event.creator)}
-    %br/
+    %br
 - else
-  = content_tag :div, "No #{name} events."
-  %br/
+  .none= "No #{name} events."
+  %br

@@ -8,8 +8,8 @@
   %br/
   = f.text_field :location
   %br/
-  = f.label :datetime
+  = f.label :date
   %br/
-  = f.datetime_select :datetime
+  = f.datetime_select :datetime, order: [:day, :month, :year, :hour, :minute], ampm: true, start_year: Date.current.year, end_year: Date.current.year + 10, minute_step: 10
   %br/
   = f.submit
