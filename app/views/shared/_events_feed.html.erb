@@ -1,8 +1,16 @@
-<% @events.each do |event| %>
-  <%= content_tag :div, event.name %>
-  <%= content_tag :div, "#{event.datetime} at #{event.location}" %>
-  <% if !current_page?(controller: 'users') %>
-    <%= content_tag :div, event.creator.name %>
+<%= content_tag :div, "#{name.capitalize} Events:" %>
+<% if events.any? %>
+  <% events.each do |event|  %>
+    <%= content_tag :div, link_to(event.name, event) %>
+    <%= content_tag :div, format_date(event.datetime) %>
+    <%= content_tag :div, event.location %>
+    <%= content_tag :div, event.description.truncate(32).gsub(/\n/, " ")  %>
+    <% if !current_page?(controller: 'users') %>
+      <div>Hosted by <%= link_to("#{event.creator.name}", event.creator) %></div>
+    <% end %>
+    <br>
   <% end %>
+<% else %>
+  <%= content_tag :div, "No #{name} events." %>
   <br>
 <% end %>
