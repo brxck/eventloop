@@ -1,4 +1,5 @@
 %h1= @event.name
+.imgoing= link_to "I'm going", add_event_path
 .date= format_date(@event.datetime)
 .location= @event.location
 .description= @event.description

@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   post 'login',  to: 'users#login'
   get  'logout', to: 'users#logout'
 
+  get  'events/:id/add', to: 'events#add', as: 'add_event'
+
   resources :users, :events
 end

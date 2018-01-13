@@ -21,6 +21,17 @@ class EventsController < ApplicationController
     @past = Event.past
   end
 
+  def add
+    if logged_in? && (event = Event.find(params[:id]))
+      event.attendees << current_user
+      flash[:success] = "You're going to #{event.name}!"
+      redirect_to event
+    else
+      flash[:danger] = 'You need to login before adding events.'
+      redirect_to login_path
+    end
+  end
+
   private
 
   def event_params
