@@ -30,6 +30,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    reset_session
+    @current_user = nil
+    redirect_to root_url
+  end
+
   private
 
   def user_params

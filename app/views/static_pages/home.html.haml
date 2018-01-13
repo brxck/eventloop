@@ -6,6 +6,3 @@
   .login= link_to "Log in", login_path
   .signup= link_to "Sign up", new_user_path
   .browse= link_to "Browse events", events_path
-  = form_for :user do |f|
-    = f.text_field :email
-    = f.submit "Log in"
