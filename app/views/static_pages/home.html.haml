@@ -1,7 +1,11 @@
 - if logged_in?
-  = content_tag :div, "You are #{current_user.email}"
-- flash.each do |type, message|
-  = content_tag :div, message, class: "flash-#{type}"
-= form_for :user do |f|
-  = f.text_field :email
-  = f.submit "Log in"
+  .greeting Hello #{current_user.name}!
+  .counter You have #{link_to "#{pluralize(@upcoming_count, 'upcoming event')}!", current_user}
+  .browse= link_to "Find more events", events_path
+- else
+  .login= link_to "Log in", login_path
+  .signup= link_to "Sign up", new_user_path
+  .browse= link_to "Browse events", events_path
+  = form_for :user do |f|
+    = f.text_field :email
+    = f.submit "Log in"
