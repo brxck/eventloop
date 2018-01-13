@@ -1,3 +1,5 @@
+- provide :title, "Home"
+
 - if logged_in?
   .greeting Hello #{current_user.name}!
   .counter You have #{link_to "#{pluralize(@upcoming_count, 'upcoming event')}!", current_user}

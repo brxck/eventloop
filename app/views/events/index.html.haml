@@ -1,3 +1,4 @@
-%h1 Events
+- provide :title, "Events"
+
 = render partial: 'shared/events_feed', locals: { events: @upcoming, name: 'upcoming' }
 = render partial: 'shared/events_feed', locals: { events: @past, name: 'past' }
