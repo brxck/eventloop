@@ -1,10 +1,10 @@
 - if logged_in?
   - if hosting?(event)
     .status You're hosting this event.
-    .action= link_to "Delete", event_path, method: :delete
+    .action= link_to "Delete", event_path(event.id), method: :delete
   - elsif going?(event)
     .status You're going to this event.
-    .action= link_to "I'm not going.", unattend_event_path(event.id)
+    .action= link_to "Not Going", unattend_event_path(event.id)
   - else
     .status You're not going to this event yet.
-    .action= link_to "I'm going", attend_event_path(event.id)
+    .action= link_to "I'm Going", attend_event_path(event.id)

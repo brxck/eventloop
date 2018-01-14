@@ -1,12 +1,13 @@
 - provide :title, "Home"
 
-%h1.brand EventLoop
+%h1.brand eventloop
 
-- if logged_in?
-  .greeting Hello #{current_user.name}!
-  .counter You have #{link_to "#{pluralize(@upcoming_count, 'upcoming event')}!", current_user}
-  .browse= link_to "Find more events", events_path
-- else
-  .login= link_to "Log in", login_path
-  .signup= link_to "Sign up", new_user_path
-  .browse= link_to "Browse events", events_path
+.home
+  - if logged_in?
+    .greeting Hello #{current_user.name}!
+    .counter You have #{link_to "#{pluralize(@upcoming_count, 'upcoming event')}!", current_user}
+    .button.browse= link_to "Find more events", events_path
+  - else
+    .button.login= link_to "Log in", login_path
+    .button.signup= link_to "Sign up", new_user_path
+    .button.browse= link_to "Browse", events_path

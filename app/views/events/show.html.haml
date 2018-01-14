@@ -1,11 +1,12 @@
 - provide :title, @event.name
 
-= render 'shared/event_actions'
-
-.date= format_date(@event.datetime)
-.location= @event.location
-.description= @event.description
-.host Hosted by #{link_to(@event.creator.name, @event.creator)}
-.going People going:
-- @event.attendees.each do |attendee|
-  .attendee= link_to(attendee.name, attendee)
+.event
+  .date ⏰ #{format_date(@event.datetime)}
+  .location 🌎 #{@event.location}
+  .description 🖉 #{@event.description}
+  .host 👤 Hosted by #{link_to(@event.creator.name, @event.creator)}
+  .going 🎈 Going:
+  - @event.attendees.each do |attendee|
+    .attendee= link_to(attendee.name, attendee)
+.actions
+  = render 'shared/event_actions', event: @event

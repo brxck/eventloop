@@ -1,7 +1,12 @@
 - provide :title, "Log in"
 
-= form_for :user do |f|
-  = f.text_field :email
-  = f.submit "Log in"
+.center (Try brxck@test.com)
+%br
 
-= link_to "Create Account", new_user_path
+= form_for :user do |f|
+  = f.label :email
+  = f.text_field :email
+  %br
+  = f.submit "Log in"
+  %br
+.center= link_to "Create Account", new_user_path

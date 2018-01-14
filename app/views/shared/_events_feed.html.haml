@@ -1,15 +1,18 @@
-.events= "#{name.capitalize} Events:"
-- if events.any?
-  - events.each do |event|
-    .name= link_to(event.name, event)
-    .date= format_date(event.datetime)
-    .location= event.location
-    .description= event.description.truncate(32).gsub(/\n/, " ")
-    - if !current_page?(controller: 'users')
-      %div
-        Hosted by #{link_to("#{event.creator.name}", event.creator)}
-    = render 'shared/event_actions'
+.kind= "#{name.capitalize} Events"
+.feed
+  - if events.any?
+    - events.each do |event|
+      .event
+        = link_to(event.name, event, class: :name)
+        .date ⏰ #{format_date(event.datetime)}
+        .location 🌎 #{event.location}
+        .description 🖉 #{event.description.truncate(50)}
+        .going 🎈 #{pluralize(event.attendees.count, 'person')} going.
+        - if !current_page?(controller: 'users')
+          %div
+            .host 👤 Hosted by #{link_to(event.creator.name, event.creator)}
+      .actions
+        = render 'shared/event_actions', event: event
+  - else
+    .event= "No #{name} events."
     %br
-- else
-  .none= "No #{name} events."
-  %br

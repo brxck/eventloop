@@ -1,10 +1,11 @@
-%ul
-  %li= link_to 'Home', root_url
-  %li= link_to 'Browse', events_path
-  - if logged_in?
-    %li= link_to 'Your Events', current_user
-    %li= link_to 'New Event', new_event_path
-    %li= link_to 'Logout', logout_path
-  - else
-    %li= link_to 'Login', login_path
-    %li= link_to 'Sign Up', new_user_path
+%nav.navbar
+  %ul
+    %li= link_to 'Home', root_url
+    %li= link_to 'Browse', events_path
+    - if logged_in?
+      %li= link_to 'Your Events', current_user
+      %li= link_to 'New Event', new_event_path
+      %li= link_to 'Logout', logout_path
+    - else
+      %li= link_to 'Login', login_path
+      %li= link_to 'Sign Up', new_user_path
