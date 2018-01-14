@@ -10,4 +10,12 @@ module EventsHelper
       false
     end
   end
+
+  def hosting?(event)
+    if logged_in?
+      current_user.events.include?(event) ? true : false
+    else
+      false
+    end
+  end
 end

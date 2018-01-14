@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :require_login, only: %i[attend, unattend]
+  before_action :require_login, only: %i[attend, unattend, destroy]
 
   def new
     @event = Event.new
@@ -26,12 +26,29 @@ class EventsController < ApplicationController
     @past = Event.past
   end
 
+  def destroy
+    if !(event = Event.find_by(params[:id]))
+      flash[:danger] = "Event not found."
+      redirect_to events_path
+    elsif !helpers.hosting?(event)
+      flash[:danger] = "You can't delete an event you're not hosting."
+      redirect_to event
+    else
+      event.destroy
+      flash[:success] = "Event deleted."
+      redirect_to current_user
+    end
+  end
+
   def attend
     if !(event = Event.find(params[:id]))
       flash[:danger] = "Invalid event."
       redirect_to events_path
-    elsif event.attendees.include?(current_user)
+    elsif helpers.going?(event)
       flash[:warning] = "You're already going to #{event.name}!"
+      redirect_to event
+    elsif helpers.hosting?(event)
+      flash[:warning] = "You're already hosting #{event.name}."
       redirect_to event
     else
       event.attendees << current_user
@@ -44,8 +61,11 @@ class EventsController < ApplicationController
     if !(event = Event.find(params[:id]))
       flash[:danger] = "Invalid event."
       redirect_to events_path
-    elsif !event.attendees.include?(current_user)
+    elsif !helpers.going?(event)
       flash[:warning] = "You're already not going to #{event.name}!"
+      redirect_to event
+    elsif helpers.hosting?(event)
+      flash[:warning] = "You're already hosting #{event.name}."
       redirect_to event
     else
       event.attendees.destroy(current_user)
