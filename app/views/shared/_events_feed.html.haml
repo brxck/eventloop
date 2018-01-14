@@ -8,6 +8,12 @@
     - if !current_page?(controller: 'users')
       %div
         Hosted by #{link_to("#{event.creator.name}", event.creator)}
+    - if going?(event)
+      .status You're going to this event.
+      .action= link_to "I'm not going.", unattend_event_path(event.id)
+    - else
+      .status You're not going to this event yet.
+      .action= link_to "I'm going", attend_event_path(event.id)
     %br
 - else
   .none= "No #{name} events."

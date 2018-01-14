@@ -1,6 +1,11 @@
 - provide :title, @event.name
 
-.imgoing= link_to "I'm going", add_event_path
+- if going?(@event)
+  .status You're going to this event.
+  .action= link_to "I'm not going.", unattend_event_path
+- else
+  .status You're not going to this event yet.
+  .action= link_to "I'm going", attend_event_path
 .date= format_date(@event.datetime)
 .location= @event.location
 .description= @event.description
