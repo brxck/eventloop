@@ -9,5 +9,5 @@ class Event < ApplicationRecord
   scope :upcoming, -> { where('datetime > CURRENT_TIMESTAMP').soonest }
   scope :past, -> { where('datetime < CURRENT_TIMESTAMP').most_recent }
 
-  validates %i[name location datetime description], presence: true
+  validates :name, :location, :datetime, :description, presence: true
 end
