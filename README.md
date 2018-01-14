@@ -1,6 +1,7 @@
-# eventloop
+# [eventloop](https://hidden-retreat-34011.herokuapp.com/)
 
 This is a project for [The Odin Project: Associations.](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations)
+
 Check it out [here!](https://hidden-retreat-34011.herokuapp.com/)
 
 ## Features
