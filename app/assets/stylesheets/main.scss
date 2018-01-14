@@ -1,42 +1,57 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Scope+One');
+@import url("https://fonts.googleapis.com/css?family=Lato|Scope+One");
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 14pt;
 }
 
 a {
   text-decoration: none;
-    &:visted {
+
+  &:visited {
     color: black;
   }
+
   &:hover {
     color: darkblue;
   }
+
   &:active {
     color: black;
   }
+
   &:link {
     color: black;
   }
 }
 
 h1 {
-  font-family: 'Scope One', serif;
+  font-family: "Scope One", serif;
+  font-size: 4em;
   font-weight: normal;
   text-align: center;
-  font-size: 4em;
 }
 
 /* navbar */
 
 nav {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  position: relative;
+  z-index: 99;
+
   ul {
-    list-style-type: none;
-    padding: 0;
-    margin-right: 1em;
-    text-align: right;
     font-weight: 600;
+    list-style-type: none;
+    margin-right: 1em;
+    padding: 0;
+    position: relative;
+    text-align: right;
+
+    a:visited, a:active, a:link {
+      color: white;
+    }
   }
+
   li {
     display: inline;
     margin-right: 1em;
@@ -46,85 +61,125 @@ nav {
 /* homepage */
 
 .brand {
+  color: white;
   font-size: 7em;
+  position: relative;
 }
 
 .home {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 50px;
+  position: relative;
   text-align: center;
+  a {
+    &:visited,
+    &:link,
+    &:hover,
+    &:active {
+      color: white;
+      font-weight: 600;
+    }
+  }
+
   div {
     margin: 10px;
+  }
+}
+
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  height: auto;
+  width: 100%;
+
+  /* Set up positioning */
+  left: 0;
+  position: fixed;
+  top: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px; /* 50% */
   }
 }
 
 /* events_feed */
 
 .kind {
-  text-align: center;
   font-size: 24pt;
+  text-align: center;
 }
 
 .feed {
-
   .name {
-    font-family: 'Scope One', serif;
+    font-family: "Scope One", serif;
     font-size: 28pt;
     font-weight: 400;
   }
 }
 
 .event {
+  align-items: flex-start;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
   padding: 15px;
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   width: 35%;
 
   * {
     margin: 2px;
   }
-  
+
   .attendee {
     margin-left: 25px;
   }
 }
 
 .actions {
+  align-items: center;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: row;
-  margin-top: -20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+  margin-top: -20px;
   padding: 15px;
-  background-color: whitesmoke;
-  align-items: center;
-  justify-content: space-between;
   width: 35%;
 
-  .action, .status {
+  .action,
+  .status {
     margin-left: 15px;
     margin-right: 15px;
   }
 
   .action {
-    padding-top: 10px;
+    background-color: white;
     padding-bottom: 10px;
     padding-left: 15px;
     padding-right: 15px;
-    background-color: white;
+    padding-top: 10px;
   }
 }
 
 /* forms */
 
-input, textarea {
+input,
+textarea {
+  display: block;
   margin-left: auto;
   margin-right: auto;
-  display: block;
 }
 
 .select {
@@ -133,8 +188,8 @@ input, textarea {
 
 label {
   display: block;
-  text-align: center;
   line-height: 150%;
+  text-align: center;
 }
 
 /* flash */

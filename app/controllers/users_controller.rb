@@ -23,10 +23,10 @@ class UsersController < ApplicationController
     if (@user = User.find_by(email: params[:user][:email]))
       session[:user_id] = @user.id
       flash[:sucess] = "You are now logged in as #{current_user.name}."
-      redirect_to @user
+      redirect_to root_url
     else
       flash.now[:danger] = 'Login unsuccessful.'
-      redirect_to root_url
+      redirect_to login_path
     end
   end
 
