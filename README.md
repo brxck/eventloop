@@ -1,24 +1,20 @@
-# README
+# eventloop
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project for [The Odin Project: Associations.](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations)
 
-Things you may want to cover:
+## Features
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Authentication & authorization
+  - Sign up and log in
+  - Event actions are only available to logged in users
+  - Only the host of an event can delete it
+- Associations
+  - The user which creates an event becomes its host (`has\_many, belongs_to`)
+  - Many users can attend an event (`has_many, through:`)
+- Scopes
+  - Differentiate between upcoming and past events
+  - Order most recent/soonest events
+- s t y l e
+  - No framework used!
+  - Minimal
+  - Web fonts
