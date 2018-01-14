@@ -13,4 +13,8 @@
   %br/
   = f.datetime_select :datetime, order: [:day, :month, :year, :hour, :minute], ampm: true, start_year: Date.current.year, end_year: Date.current.year + 10, minute_step: 10
   %br/
+  = f.label :description
+  %br
+  = f.text_area :description
+  %br
   = f.submit
